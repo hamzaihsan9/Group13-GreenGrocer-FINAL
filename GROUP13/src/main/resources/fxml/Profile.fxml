@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.group13.greengrocer.controllers.ProfileController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="My Profile" styleClass="title-label"/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Username:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Label fx:id="usernameLabel" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Full Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="fullNameField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Phone:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="phoneField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+        <Label text="Address:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <TextArea fx:id="addressField" prefRowCount="3" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+
+        <Label text="New Password:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <PasswordField fx:id="passwordField" promptText="Leave blank to keep current" GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <Separator/>
+
+    <VBox spacing="5">
+        <Label fx:id="loyaltyLabel" text="Loyalty Status"/>
+        <Label fx:id="ordersLabel" text="Completed Orders: 0"/>
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Cancel" onAction="#handleCancel"/>
+        <Button text="Save Changes" onAction="#handleSave" styleClass="primary-button"/>
+    </HBox>
+</VBox>

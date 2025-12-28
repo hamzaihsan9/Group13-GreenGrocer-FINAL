@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.group13.greengrocer.controllers.CartController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <Label text="Shopping Cart" styleClass="title-label"/>
+
+    <TableView fx:id="cartTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="productCol" text="Product" prefWidth="150"/>
+            <TableColumn fx:id="quantityCol" text="Quantity" prefWidth="100"/>
+            <TableColumn fx:id="priceCol" text="Unit Price" prefWidth="100"/>
+            <TableColumn fx:id="subtotalCol" text="Subtotal" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Button text="Remove Item" onAction="#removeItem"/>
+        <Button text="Update Quantity" onAction="#updateQuantity"/>
+    </HBox>
+
+    <Separator/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="couponField" promptText="Enter coupon code"/>
+        <Button text="Apply Coupon" onAction="#applyCoupon"/>
+        <Label fx:id="couponLabel"/>
+    </HBox>
+
+    <VBox spacing="5" alignment="CENTER_RIGHT">
+        <Label fx:id="subtotalLabel" text="Subtotal: ₺0.00"/>
+        <Label fx:id="discountLabel" text="Discount: ₺0.00"/>
+        <Label fx:id="vatLabel" text="VAT (18%): ₺0.00"/>
+        <Label fx:id="totalLabel" text="Total: ₺0.00" style="-fx-font-weight: bold; -fx-font-size: 16px;"/>
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Close" onAction="#closeCart"/>
+        <Button text="Place Order" onAction="#placeOrder" styleClass="primary-button"/>
+    </HBox>
+</VBox>

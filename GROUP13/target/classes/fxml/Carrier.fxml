@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.group13.greengrocer.controllers.CarrierController">
+    
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            <Label fx:id="welcomeLabel" text="Welcome" styleClass="header-label"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="ratingLabel" text="Rating: N/A"/>
+            <Button text="Profile" onAction="#openProfile"/>
+            <Button text="Logout" onAction="#handleLogout"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane>
+            <Tab text="Available Orders" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <TableView fx:id="availableOrdersTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="availIdCol" text="Order ID" prefWidth="80"/>
+                            <TableColumn fx:id="availCustomerCol" text="Customer" prefWidth="150"/>
+                            <TableColumn fx:id="availTimeCol" text="Order Time" prefWidth="150"/>
+                            <TableColumn fx:id="availTotalCol" text="Total" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                    <HBox spacing="10">
+                        <Button text="Accept Order" onAction="#acceptOrder"/>
+                        <Button text="View Details" onAction="#viewAvailableOrderDetails"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+            <Tab text="My Deliveries" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <TableView fx:id="myOrdersTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="myIdCol" text="Order ID" prefWidth="80"/>
+                            <TableColumn fx:id="myCustomerCol" text="Customer" prefWidth="150"/>
+                            <TableColumn fx:id="myStatusCol" text="Status" prefWidth="100"/>
+                            <TableColumn fx:id="myTotalCol" text="Total" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                    <HBox spacing="10">
+                        <Button text="Mark Delivered" onAction="#completeDelivery"/>
+                        <Button text="View Details" onAction="#viewMyOrderDetails"/>
+                    </HBox>
+                </VBox>
+            </Tab>
+            <Tab text="My Ratings" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label fx:id="avgRatingLabel" text="Average Rating: N/A" style="-fx-font-size: 16px;"/>
+                    <ListView fx:id="ratingsList" VBox.vgrow="ALWAYS"/>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>

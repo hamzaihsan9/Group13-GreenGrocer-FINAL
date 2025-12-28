@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.group13.greengrocer.controllers.OwnerController">
+    
+    <top>
+        <HBox spacing="10" alignment="CENTER_LEFT" styleClass="header">
+            <padding>
+                <Insets top="10" right="20" bottom="10" left="20"/>
+            </padding>
+            <Label fx:id="welcomeLabel" text="Owner Dashboard" styleClass="header-label"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Logout" onAction="#handleLogout"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane>
+            <Tab text="Products" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <HBox spacing="10">
+                        <Button text="Add Product" onAction="#addProduct"/>
+                        <Button text="Edit Product" onAction="#editProduct"/>
+                        <Button text="Delete Product" onAction="#deleteProduct"/>
+                    </HBox>
+                    <TableView fx:id="productsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="prodNameCol" text="Name" prefWidth="150"/>
+                            <TableColumn fx:id="prodTypeCol" text="Type" prefWidth="100"/>
+                            <TableColumn fx:id="prodPriceCol" text="Price" prefWidth="100"/>
+                            <TableColumn fx:id="prodStockCol" text="Stock" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            <Tab text="Orders" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <TableView fx:id="ordersTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="orderIdCol" text="ID" prefWidth="60"/>
+                            <TableColumn fx:id="orderCustomerCol" text="Customer" prefWidth="150"/>
+                            <TableColumn fx:id="orderStatusCol" text="Status" prefWidth="100"/>
+                            <TableColumn fx:id="orderTotalCol" text="Total" prefWidth="100"/>
+                        </columns>
+                    </TableView>
+                    <Button text="View Details" onAction="#viewOrderDetails"/>
+                </VBox>
+            </Tab>
+            <Tab text="Coupons" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <HBox spacing="10">
+                        <Button text="Create Coupon" onAction="#createCoupon"/>
+                        <Button text="Delete Coupon" onAction="#deleteCoupon"/>
+                    </HBox>
+                    <TableView fx:id="couponsTable" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="couponCodeCol" text="Code" prefWidth="150"/>
+                            <TableColumn fx:id="couponDiscountCol" text="Discount" prefWidth="100"/>
+                            <TableColumn fx:id="couponExpiryCol" text="Expiry" prefWidth="100"/>
+                            <TableColumn fx:id="couponUsedCol" text="Used" prefWidth="80"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </Tab>
+            <Tab text="Messages" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <ListView fx:id="messagesList" VBox.vgrow="ALWAYS"/>
+                    <TextArea fx:id="replyArea" promptText="Type reply..." prefRowCount="3"/>
+                    <Button text="Send Reply" onAction="#sendReply"/>
+                </VBox>
+            </Tab>
+            <Tab text="Reports" closable="false">
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label fx:id="revenueLabel" text="Total Revenue: ₺0.00" style="-fx-font-size: 18px;"/>
+                    <Label fx:id="ordersCountLabel" text="Total Orders: 0" style="-fx-font-size: 16px;"/>
+                </VBox>
+            </Tab>
+        </TabPane>
+    </center>
+</BorderPane>
